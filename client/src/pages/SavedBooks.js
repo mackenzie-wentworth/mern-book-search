@@ -18,8 +18,8 @@ import { GET_ME } from '../utils/queries';
 
 
 const SavedBooks = () => {
-  // MW - Execute the query on component load
-  const { loading, data } = useQuery(GET_ME);
+  // MW - Execute the query on component load; include "refetch" method
+  const { loading, data, refetch} = useQuery(GET_ME);
   // MW - Invoke `useMutation()` hook to return a Promise-based function and data about the REMOVE_BOOK mutation; where "removeBook" is a trigger 
   const [removeBook, { error }] = useMutation(REMOVE_BOOK);
   // MW - save it to variable named userData
@@ -43,6 +43,9 @@ const SavedBooks = () => {
       
       // upon success, remove book's id from localStorage
       removeBookId(bookId);
+
+      // MW - call "refetch()" method to refresh the state, which will cause the book to disappear immediately right when user clicks "delete this book" button
+      refetch()
     } catch (err) {
       console.error(err);
     }
