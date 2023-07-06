@@ -44,7 +44,6 @@ const SignupForm = () => {
       console.log(data);
       // MW - where we use the token
       Auth.login(data.addUser.token);
-      
     } catch (err) {
       console.error(err);
       setShowAlert(true);
