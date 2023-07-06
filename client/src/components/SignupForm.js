@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 
-import { createUser } from '../utils/API';
+// MW - Import useMutation hook to later execute ADD_USER mutation
+import { useMutation } from '@apollo/client';
+// MW - Import the mutation we are going to execute from its file
+import { ADD_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 const SignupForm = () => {
@@ -11,6 +14,9 @@ const SignupForm = () => {
   const [validated] = useState(false);
   // set state for alert
   const [showAlert, setShowAlert] = useState(false);
+
+  // MW - Invoke `useMutation()` hook to return a Promise-based function and data about the ADD_USER mutation; where "addUser" is a trigger 
+  const [addUser, { error }] = useMutation(ADD_USER);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -27,16 +33,18 @@ const SignupForm = () => {
       event.stopPropagation();
     }
 
+    // MW - Since mutation function is async, wrap in a `try...catch` to catch any network errors from throwing due to a failed request.
     try {
-      const response = await createUser(userFormData);
+      // MW - Execute mutation and pass in defined parameter data as variables
+      const { data } = await addUser({
+        // MW - packages up the data we are supposed to send
+        variables: { ...userFormData },
+      });
 
-      if (!response.ok) {
-        throw new Error('something went wrong!');
-      }
-
-      const { token, user } = await response.json();
-      console.log(user);
-      Auth.login(token);
+      console.log(data);
+      // MW - where we use the token
+      Auth.login(data.addUser.token);
+      
     } catch (err) {
       console.error(err);
       setShowAlert(true);
