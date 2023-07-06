@@ -22,8 +22,8 @@ const server = new ApolloServer({
   context: authMiddleware,
 });
 
-// MW - apply ApolloServer to the Express server as middleware (since we are using apollo-server-express@2.15.0 version)
-server.applyMiddleware({ app });
+// // MW - apply ApolloServer to the Express server as middleware (since we are using apollo-server-express@2.15.0 version)
+// server.applyMiddleware({ app });
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -37,15 +37,26 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
-// app.use(routes);
-
 // db.once('open', () => {
-//   app.listen(PORT, () => console.log(`🌍 Now listening on localhost:${PORT}`));
+//   app.listen(PORT, () => {
+//     console.log(`API server running on port ${PORT}!`);
+//     console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
+//   });
 // });
 
-db.once('open', () => {
-  app.listen(PORT, () => {
-    console.log(`API server running on port ${PORT}!`);
-    console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
-  });
-});
+// MW - Create a new instance of an Apollo server with the GraphQL schema
+const startApolloServer = async () => {
+  await server.start();
+  server.applyMiddleware({ app });
+
+  db.once('open', () => {
+    app.listen(PORT, () => {
+      console.log(`API server running on port ${PORT}!`);
+      console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
+    })
+  })
+};
+
+// MW - Call the async function to start the server
+startApolloServer();
+
