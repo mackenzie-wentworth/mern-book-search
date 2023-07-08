@@ -83,6 +83,9 @@ THEN I am logged out of the site and presented with a menu with the options Sear
 
 To utilize the app, users can navigate to the [Google Books Search](https://mw-mern-book-search-0b8be4f1ae0f.herokuapp.com/), where the can search, login/signup, and save or remove searched books from their account. 
 
+![An image to show search books results using the Google Books Search application.](./assets/images/searched-books.png)
+
+![An image to show a user's saved books and option to delete books within their account using Google Books Search application.](./assets/images/saved-books.png)
 
 ## Technologies Used
 
