@@ -2,18 +2,32 @@
 
 ## Application Links
 
-* GitHub Repository for Application: 
+* GitHub Repository for Application: https://github.com/mackenzie-wentworth/mern-book-search
 
-* Heroku Deployed Application: 
+* Heroku Deployed Application: https://mw-mern-book-search-0b8be4f1ae0f.herokuapp.com/
+
 
 ## Description
+
+For this week's Challenge, I was given a fully functioning starter code built with a RESTful API, and tasked to refactor it into a **GraphQL API** featuring **Apollo Server**. 
+
+Provided by the starter code, this is a **MERN stack** application which serves as a Google Books API search engine that allows users to search and save books.
+
+**To successfuly refactor the initial starter code, I made sure to do the following:**
+
+1. Set up an Apollo Server to use GraphQL queries and mutations to fetch and modify data, replacing the existing RESTful API.
+
+2. Modify the existing authentication middleware so that it works in the context of a GraphQL API.
+
+3. Create an Apollo Provider so that requests can communicate with an Apollo Server.
+
+4. Deploy application to Heroku with a MongoDB database using MongoDB Atlas.
 
 
 ## Table of Contents
 
 - [User Story](#user-story)
 - [Acceptance Criteria](#acceptance-criteria)
-- [Installation](#installation)
 - [Usage](#usage)
 - [Technologies Used](#technologies-used)
 - [Questions](#questions)
@@ -65,10 +79,9 @@ THEN I am logged out of the site and presented with a menu with the options Sear
 ```
 
 
-## Installation
-
-
 ## Usage
+
+To utilize the app, users can navigate to the [Google Books Search](https://mw-mern-book-search-0b8be4f1ae0f.herokuapp.com/), where the can search, login/signup, and save or remove searched books from their account. 
 
 
 ## Technologies Used
@@ -81,17 +94,20 @@ THEN I am logged out of the site and presented with a menu with the options Sear
 * [Apollo Client](https://www.apollographql.com/docs/react/)
 * [Apollo Server](https://www.apollographql.com/docs/apollo-server/)
 * [GraphQL](https://graphql.com/)
-* [Nodemon](https://www.npmjs.com/package/nodemon)
 * [MongoDB](https://www.mongodb.com/)
 * [Mongoose](https://www.npmjs.com/package/mongoose)
+* [MongoDB Atlas](https://www.mongodb.com/docs/atlas/)
+* [Heroku](https://www.heroku.com/)
+* [Nodemon](https://www.npmjs.com/package/nodemon)
 * [Concurrently](https://www.npmjs.com/package/concurrently)
 * [Jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
 * [JWT Decode](https://jwt.io/)
 * [Bcrypt](https://www.npmjs.com/package/bcrypt)
 * [Babel](https://babeljs.io/docs/)
 * [Bootstrap Framework](https://getbootstrap.com/)
-* [Heroku](https://www.heroku.com/)
+
 ---
+
 
 ## Questions?
 
@@ -99,9 +115,11 @@ If you have any questions, please see my contact information below to reach me f
 * **GitHub**: mackenzie-wentworth, at https://github.com/mackenzie-wentworth
 * **Email**: mwentworth28@gmail.com
 
+
 ## License
 
 This project is covered under the [MIT License](./LICENSE). For more details, please click the license icon below under 'Badges'.
+
 
 ## Badges
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
