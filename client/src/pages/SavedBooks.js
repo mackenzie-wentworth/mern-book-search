@@ -19,12 +19,12 @@ import { GET_ME } from '../utils/queries';
 
 const SavedBooks = () => {
   // MW - Execute the query on component load; include "refetch" method
-  const { loading, data, refetch} = useQuery(GET_ME);
+  const { loading, data, refetch } = useQuery(GET_ME);
   // MW - Invoke `useMutation()` hook to return a Promise-based function and data about the REMOVE_BOOK mutation; where "removeBook" is a trigger 
   const [removeBook, { error }] = useMutation(REMOVE_BOOK);
   // MW - save it to variable named userData
   const userData = data?.me || {};
-  
+
   // use this to determine if `useEffect()` hook needs to run again
   const userDataLength = Object.keys(userData).length;
 
@@ -40,7 +40,7 @@ const SavedBooks = () => {
       const { data } = await removeBook({
         variables: { bookId },
       });
-      
+
       // upon success, remove book's id from localStorage
       removeBookId(bookId);
 
