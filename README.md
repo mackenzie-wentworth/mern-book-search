@@ -9,11 +9,11 @@
 
 ## Description
 
-For this week's Challenge, I was given a fully functioning starter code built with a RESTful API, and tasked to refactor it into a **GraphQL API** featuring **Apollo Server**. 
+For this week's Challenge, I was given a fully functioning starter code built with a RESTful API, and tasked to refactor it into a **GraphQL API** featuring *Apollo Server*. 
 
 Provided by the starter code, this is a **MERN stack** application which serves as a Google Books API search engine that allows users to search and save books.
 
-**To successfuly refactor the initial starter code, I made sure to do the following:**
+*To successfuly refactor the initial starter code, I made sure to do the following:*
 
 1. Set up an Apollo Server to use GraphQL queries and mutations to fetch and modify data, replacing the existing RESTful API.
 
